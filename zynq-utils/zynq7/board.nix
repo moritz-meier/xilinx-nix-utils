@@ -33,6 +33,14 @@ lib.makeExtensibleWithCustomName "overrideAttrs" (final: {
     }).override
       (lib.attrsets.optionalAttrs (args ? fsbl) args.fsbl);
 
+  dram-test =
+    (pkgsCross.armhf-embedded.zynq-utils.dram-test {
+      sdt = final.sdt;
+      plat = "zynq7";
+      proc = "ps7_cortexa9_0";
+    }).override
+      (lib.attrsets.optionalAttrs (args ? dram-test) args.dram-test);
+
   linux-dt =
     (zynq-utils.linux-dt {
       hwplat = final.hwplat;

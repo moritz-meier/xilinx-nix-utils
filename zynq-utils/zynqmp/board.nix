@@ -41,6 +41,14 @@ lib.makeExtensibleWithCustomName "overrideAttrs" (final: {
     }).override
       (lib.attrsets.optionalAttrs (args ? fsbl) args.fsbl);
 
+  dram-test =
+    (pkgsCross.aarch64-embedded.zynq-utils.dram-test {
+      sdt = final.sdt;
+      plat = "zynqmp";
+      proc = "psu_cortexa53_0";
+    }).override
+      (lib.attrsets.optionalAttrs (args ? dram-test) args.dram-test);
+
   tfa = (pkgsCross.aarch64-multiplatform.zynq-utils.tfa { plat = "zynqmp"; }).override (
     lib.attrsets.optionalAttrs (args ? tfa) args.tfa
   );

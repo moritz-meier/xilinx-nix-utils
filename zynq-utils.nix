@@ -4,6 +4,8 @@ final: prev: {
     sdt = prev.callPackage ./zynq-utils/sdt.nix { };
     pmufw = prev.callPackage ./zynq-utils/pmufw.nix { };
     fsbl = prev.callPackage ./zynq-utils/fsbl.nix { };
+    dram-test = prev.callPackage ./zynq-utils/dram-test.nix { };
+
     tfa = prev.callPackage ./zynq-utils/tfa.nix { };
 
     linux-dt = prev.callPackage ./zynq-utils/linux-dt.nix { };
